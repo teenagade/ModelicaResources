@@ -10,7 +10,9 @@ model QuarterCar
   parameter SI.TranslationalDampingConstant c_tyre=0 "Tyre Damping Rate in Ns/m";
   parameter SI.Length step_height=0.075;
   parameter SI.Time time_from_start = 0.02;
-    
+
+
+// Variables to solve for     
   Real pi=2*Modelica.Math.asin(1.0);
   Real z_road, z_tyre, z_body;
   Real z_road_dot, z_tyre_dot, z_body_dot;
