@@ -23,7 +23,7 @@ model RidelModel_4DOF
   parameter Real step_height=0.075 "Height of Step";
   parameter Real velocity = 27.8 "Speed of vehicle";
   
-  Real sprung_mass = mass_total - mass_unsprung_f - mass_unsprung_r;
+  Real mass_sprung = mass_total - mass_unsprung_f - mass_unsprung_r;
   
   Real k_ride_f = kf*motion_ratio_f^2;
   Real k_ride_r = kr*motion_ratio_r^2;
@@ -51,7 +51,7 @@ initial equation
 
 equation
 
-  z_dotdot = (k_ride_f*(z_tyre_f-z) + k_ride_r*(z_tyre_r-z) + cf*(z_tyre_f_dot-z_dot) + cr*(z_tyre_r_dot-z_dot) - a*k_ride_f*theta + b*k_ride_r*theta - a*cf*theta_dot + b*cr*theta_dot)/mass_total;
+  z_dotdot = (k_ride_f*(z_tyre_f-z) + k_ride_r*(z_tyre_r-z) + cf*(z_tyre_f_dot-z_dot) + cr*(z_tyre_r_dot-z_dot) - a*k_ride_f*theta + b*k_ride_r*theta - a*cf*theta_dot + b*cr*theta_dot)/mass_sprung;
   
   theta_dotdot = (-k_ride_f*a*(z_tyre_f-z) + k_ride_r*b*(z_tyre_r-z) - cf*a*(z_tyre_f_dot-z_dot) + cr*b*(z_tyre_r_dot-z_dot) - k_ride_f*a^2*theta -k_ride_r*b^2*theta - cf*a^2*theta_dot -cr*b^2*theta_dot)/Iyy;
   
