@@ -28,10 +28,6 @@ model RidelModel_4DOF
   Real k_ride_f = kf*motion_ratio_f^2;
   Real k_ride_r = kr*motion_ratio_r^2;
   
-  Real k_wheel_f = 2*(k_ride_f*k_tyre_f)/(k_ride_f+k_tyre_f);
-  Real k_wheel_r = 2*(k_ride_r*k_tyre_r)/(k_ride_r+k_tyre_r);
-  
-    
   Real pi=2*Modelica.Math.asin(1.0);
   Real a=cgLocation*wheelbase;
   Real b = (1-cgLocation)*wheelbase;
