@@ -63,7 +63,7 @@ equation
 
   z_dotdot = (k_ride_f*(z_tyre_fl-z) + k_ride_f*(z_tyre_fr-z) + k_ride_r*(z_tyre_rl-z) + k_ride_r*(z_tyre_rr-z) + cf*(z_tyre_fl_dot-z_dot) + cf*(z_tyre_fr_dot-z_dot) + cr*(z_tyre_rr_dot-z_dot) + cr*(z_tyre_rl_dot-z_dot) - a*k_ride_f*theta + b*k_ride_r*theta - a*cf*theta_dot + b*cr*theta_dot)/mass_sprung;
   
-  theta_dotdot = (-k_ride_f*a*(z_tyre_fl-z) -k_ride_f*a*(z_tyre_fr-z) + k_ride_r*b*(z_tyre_rl-z) + k_ride_r*b*(z_tyre_rr-z) - cf*a*(z_tyre_fl_dot-z_dot) - cf*a*(z_tyre_fr_dot-z_dot) + cr*b*(z_tyre_rl_dot-z_dot) + cr*b*(z_tyre_rr_dot-z_dot) - k_ride_f*a^2*theta -k_ride_r*b^2*theta - cf*a^2*theta_dot -cr*b^2*theta_dot)/Iyy;
+  theta_dotdot = (-k_ride_f*a*(z_tyre_fl-z) -k_ride_f*a*(z_tyre_fr-z) + k_ride_r*b*(z_tyre_rl-z) + k_ride_r*b*(z_tyre_rr-z) - cf*a*(z_tyre_fl_dot-z_dot) - cf*a*(z_tyre_fr_dot-z_dot) + cr*b*(z_tyre_rl_dot-z_dot) + cr*b*(z_tyre_rr_dot-z_dot) - 2*k_ride_f*a^2*theta - 2*k_ride_r*b^2*theta - 2*cf*a^2*theta_dot - 2*cr*b^2*theta_dot)/Iyy;
   
   z_tyre_fl_dotdot = (k_tyre_f*(z_road_fl-z_tyre_fl) + c_tyre_f*(z_road_fl_dot-z_tyre_fl_dot))/mass_unsprung_fl;
   
