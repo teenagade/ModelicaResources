@@ -42,12 +42,12 @@ model RidelModel_4DOF_DamperLookup
   Real z_tyre_f, z_tyre_f_dot, z_tyre_f_dotdot;
   Real z_tyre_r, z_tyre_r_dot, z_tyre_r_dotdot;
 
-  Modelica.Blocks.Tables.CombiTable1D damperCurvesFront(columns = 2:2, fileName = "D:/Documents/DataDriven/Modelica/front_dampers.txt", smoothness = Modelica.Blocks.Types.Smoothness.LinearSegments, tableName = "CR06", tableOnFile = true, verboseRead = false)  annotation(
+  Modelica.Blocks.Tables.CombiTable1D damperCurvesFront(columns = 2:2, fileName = "C:/Users/Admin/Documents/OpenModelicaProjects/ModelicaResources-main/RideModelDamperAndRoadLookups/front_dampers.txt", smoothness = Modelica.Blocks.Types.Smoothness.LinearSegments, tableName = "CR06", tableOnFile = true, verboseRead = false)  annotation(
     Placement(visible = true, transformation(origin = {-10, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Gain multiplyBy1000_F(k = 1000)  annotation(
     Placement(visible = true, transformation(origin = {-42, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 
-  Modelica.Blocks.Tables.CombiTable1D damperCurvesRear(columns = 2:2, fileName = "D:/Documents/DataDriven/Modelica/rear_dampers.txt", smoothness = Modelica.Blocks.Types.Smoothness.LinearSegments, tableName = "CR00", tableOnFile = true, verboseRead = false)  annotation(
+  Modelica.Blocks.Tables.CombiTable1D damperCurvesRear(columns = 2:2, fileName = "C:/Users/Admin/Documents/OpenModelicaProjects/ModelicaResources-main/RideModelDamperAndRoadLookups/rear_dampers.txt", smoothness = Modelica.Blocks.Types.Smoothness.LinearSegments, tableName = "CR00", tableOnFile = true, verboseRead = false)  annotation(
     Placement(visible = true, transformation(origin = {-10, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Math.Gain multiplyBy1000_R(k = 1000)  annotation(
     Placement(visible = true, transformation(origin = {-42, -26}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -82,9 +82,9 @@ equation
   
   z_tyre_r_dotdot = (k_tyre_r*(z_road_r-z_tyre_r) + c_tyre_r*(z_road_r_dot-z_tyre_r_dot))/mass_unsprung_r;
 
-  damper_f_dot = (((z_tyre_f_dot - z_dot - a*theta_dot)/mass_sprung) + (a*(z_tyre_f_dot - z_dot - 2*a*theta_dot))/Iyy)/(2*motion_ratio_f);
+  damper_f_dot = (((z_tyre_f_dot - z_dot - a*theta_dot)/mass_sprung) - (a*(z_tyre_f_dot - z_dot + a*theta_dot))/Iyy)/(2*motion_ratio_f);
 
-  damper_r_dot = (((z_tyre_r_dot - z_dot + b*theta_dot)/mass_sprung) + (b*(z_tyre_r_dot - z_dot - 2*b*theta_dot))/Iyy)/(2*motion_ratio_r);  
+  damper_r_dot = (((z_tyre_r_dot - z_dot + b*theta_dot)/mass_sprung) + (b*(z_tyre_r_dot - z_dot - b*theta_dot))/Iyy)/(2*motion_ratio_r);  
   
   der(z) = z_dot;
   der(theta) = theta_dot;
